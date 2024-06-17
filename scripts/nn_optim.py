@@ -9,6 +9,7 @@ import os
 script_dir = os.path.dirname(os.path.abspath(__file__)) # 获取脚本所在的目录
 os.chdir(script_dir) # 切换到脚本所在的目录
 print("Current working directory:", os.getcwd())
+
 dataset = torchvision.datasets.FashionMNIST(root="../dataset", train=False, download=False, 
                                             transform=torchvision.transforms.Compose([torchvision.transforms.ToTensor()]))
 dataloader = DataLoader(dataset, batch_size=64)
