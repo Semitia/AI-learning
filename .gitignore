@@ -6,6 +6,7 @@
 
 # Ignore the dataset directory
 dataset/
+models/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
