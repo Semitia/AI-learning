@@ -5,7 +5,6 @@ import os
 from torchvision import transforms
 from torch.utils.tensorboard import SummaryWriter
 from torchvision.utils import make_grid
-
 writer = SummaryWriter("logs")
 
 
