@@ -52,4 +52,22 @@ tudui.parameters()返回的参数张量会作为计算图中的叶子节点（le
 3. 梯度传播：
     调用result_loss.backward()时，PyTorch会沿着计算图进行反向传播，计算每个叶子节点（即模型参数）的梯度，并将梯度存储在这些张量的.grad属性中。
 
-    
+
+### with 关键字
+```python
+with torch.no_grad():
+    for data in test_dataloader:
+        imgs, targets = data
+        outputs = tudui(imgs)
+        loss = loss_fn(outputs, targets)
+        total_test_loss = total_test_loss + loss.item()
+        accuracy = (outputs.argmax(1) == targets).sum()
+        total_accuracy = total_accuracy + accuracy
+```
+with 关键字用于创建一个上下文管理器，这个上下文管理器会在代码块的开始和结束时执行特定的操作。具体到 torch.no_grad() 的情况，with 关键字的作用可以概括如下：
+
+进入上下文：当程序执行到 with 语句时，会调用上下文管理器的 __enter__ 方法。在 torch.no_grad() 的情况下，这会禁用梯度计算。
+执行代码块：在 with 语句缩进的代码块中执行所有的操作。在这个代码块中，所有的张量操作都不会计算和存储梯度。
+退出上下文：当代码块执行完毕或发生异常时，会调用上下文管理器的 __exit__ 方法。在 torch.no_grad() 的情况下，这会重新启用梯度计算（如果之前是启用的）。
+
+with 关键字的主要作用是简化资源管理和异常处理，通过调用上下文管理器的 __enter__ 和 __exit__ 方法，在进入和退出代码块时自动处理资源的分配和释放。这使得代码更加简洁、易读，并且减少了手动管理资源和异常处理的复杂性。

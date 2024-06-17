@@ -1,5 +1,6 @@
 import torch
 from torch import nn
+from torch.nn import Conv2d, MaxPool2d, Flatten, Linear, Sequential
 
 class Tudui(nn.Module):
     def __init__(self):
