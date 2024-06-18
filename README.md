@@ -8,3 +8,7 @@ https://github.com/lucidrains
 https://nn.labml.ai/
 小土堆
 https://www.bilibili.com/video/BV1hE411t7RN/
+
+### paper&code
+https://www.paperswithcode.com
+https://www.dgl.ai
