@@ -1,3 +1,6 @@
+## myTrain.py
+适用于不同数据集和模型，只需构建所需模型，重写类的load_data方式即可
+
 ### .ipynb->.py
 ```bash
 jupyter nbconvert --to script your_notebook.ipynb
