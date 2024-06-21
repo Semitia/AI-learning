@@ -18,8 +18,8 @@ os.chdir(script_dir) # 切换到脚本所在的目录
 current_directory = os.getcwd()
 print("Current working directory:", current_directory)
 # 网络
-# os.environ['HTTP_PROXY'] = 'http://127.0.0.1:7890'
-# os.environ['HTTPS_PROXY'] = 'http://127.0.0.1:7890'
+os.environ['HTTP_PROXY'] = 'http://127.0.0.1:7890'
+os.environ['HTTPS_PROXY'] = 'http://127.0.0.1:7890'
 writer_dir = '../../logs/SimpleVit/'
 model_dir = '../../models/SimpleVit/'
 
