@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<robot name="simple_robot">
+  <!-- 定义基座，没有父节点的link一般作为机器人的基座 -->
+  <link name="base">
+    <visual>
+      <!-- 相对于link原点，可视化中心 -->
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <!--cylinder，sphere，mesh，plane-->
+      <geometry>
+        <box size="0.5 0.5 0.2" />
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.5 0.5 0.2" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0" />
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+    </inertial>
+  </link>
+
+  <!-- 定义旋转臂 -->
+  <link name="arm">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.4" />
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder size="0.4 0.1 0.1" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5" />
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+    </inertial>
+  </link>
+
+  <!-- 定义关节 -->
+  <!--fixed, revolute, continuous, prismatic-->
+  <joint name="arm_joint" type="revolute">
+    <parent link="base" />
+    <child link="arm" />
+    <!--关节的原点, 以父坐标系为参考，也决定子坐标系的原点-->
+    <origin xyz="0 0 0.2" rpy="0 0 0" />
+    <!--转轴方向, 以父坐标系为参考-->
+    <axis xyz="0 0 1" />
+    <limit lower="-1.57" upper="1.57" effort="10.0" velocity="1.0" />
+  </joint>
+</robot>
