@@ -23,8 +23,13 @@
 
 ## 基础概念
 - pybullet服务器常用操作
-- URDF
+- URDF基本语法
 - Transform
-- 
+- 机器人结构
+![img.png](img.png)
+- 关节初步控制
+- 机械臂运动学
 
+- 碰撞检测
+- 抓取任务
 

@@ -1,6 +1,5 @@
 import pybullet as p
 import pybullet_data
-import time
 
 # 初始化
 p.connect(p.DIRECT)
@@ -24,7 +23,7 @@ print(f"位置 (x, y, z): {base_position}")
 print(f"方向 (四元数): {base_orientation}")
 
 # 获取特定链接的位置和方向
-link_index = 1
+link_index = 1  # base 的 id 为-1
 link_state = p.getLinkState(robot_id, link_index)
 link_position_in_parent_frame = link_state[0]  # 链接的局部位置
 link_orientation_in_parent_frame = link_state[1]  # 链接的局部方向 (四元数)
