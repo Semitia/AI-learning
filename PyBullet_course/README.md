@@ -29,7 +29,7 @@
 ![img.png](img.png)
 - 关节初步控制
 - 机械臂运动学
-
 - 碰撞检测
+https://blog.csdn.net/weixin_44350205/article/details/109705590
 - 抓取任务
 
