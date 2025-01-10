@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  graspnet:
+    image: graspnet_img:latest
+    container_name: AI-container
+    shm_size: '32gb'
+    network_mode: host
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all # 显示所有 GPU（可指定 GPU）
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - DISPLAY=${DISPLAY}         # 支持可视化
+      - QT_X11_NO_MITSHM=1         # 防止 Qt 报错
+      - HTTP_PROXY=http://127.0.0.1:7890  # Clash 代理端口
+      - HTTPS_PROXY=http://127.0.0.1:7890
+    volumes:
+      - ~/AI-learning:/workspace      
+      - /mnt/dataset_disk/dataset:/dataset 
+      - /tmp/.X11-unix:/tmp/.X11-unix # 共享 X11 的 Unix socket
+    privileged: true  
+    working_dir: /workspace        # 容器内的默认工作目录
+    stdin_open: true               # 支持交互式会话
+    tty: true                      # 启用终端
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
